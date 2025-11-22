@@ -1,0 +1,65 @@
+{
+  "schema_version": "v1",
+  "name": "StudyConcierge",
+  "description": "A concierge-style AI agent for personalized study planning, scheduling, reminders, and practice content generation.",
+  "contact_email": "support@studyplanner.com",
+  "legal_info_url": "https://studyplanner.com/privacy",
+  "tools": [
+    {
+      "name": "create_plan",
+      "description": "Create a personalized study plan based on goals and availability.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "user_profile": {"type": "object"},
+          "study_goals": {"type": "array"},
+          "availability": {"type": "object"},
+          "preferences": {"type": "object"}
+        },
+        "required": ["study_goals", "availability"]
+      }
+    },
+    {
+      "name": "start_session",
+      "description": "Starts a study session and returns session metadata.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "session_id": {"type": "string"},
+          "user_profile": {"type": "object"}
+        },
+        "required": ["session_id"]
+      }
+    },
+    {
+      "name": "generate_content",
+      "description": "Generate quizzes, flashcards, or summaries.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "topic": {"type": "string"},
+          "format": {"type": "string"},
+          "difficulty": {"type": "string"},
+          "count": {"type": "integer"}
+        },
+        "required": ["topic", "format"]
+      }
+    },
+    {
+      "name": "get_progress",
+      "description": "Fetch progress analytics for a user.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "user_id": {"type": "string"},
+          "period": {"type": "string"}
+        },
+        "required": ["user_id"]
+      }
+    }
+  ],
+  "api": {
+    "type": "openapi",
+    "url": "https://your-domain.com/openapi.json"
+  }
+}
